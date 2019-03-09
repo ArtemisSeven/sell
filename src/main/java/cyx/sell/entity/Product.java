@@ -1,6 +1,7 @@
 package cyx.sell.entity;
 
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Proxy;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,6 +9,7 @@ import java.math.BigDecimal;
 
 @Entity
 @DynamicUpdate
+@Proxy(lazy = false)//为了避免报错org.hibernate.LazyInitializationException: could not initialize proxy [cyx.sell.entity.Product#1] - no Session
 public class Product {
     @Id
     private String productId;

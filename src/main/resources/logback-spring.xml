@@ -20,7 +20,7 @@
         </filter>
         <encoder>
             <pattern>
-                %msg%n
+                %d %msg%n
             </pattern>
         </encoder>
         <!--滚动策略，按时间滚动，每天一份日志文件-->
@@ -36,7 +36,7 @@
         </filter>
         <encoder>
             <pattern>
-                %msg%n
+                %d %msg%n
             </pattern>
         </encoder>
         <!--滚动策略-->

@@ -1,5 +1,6 @@
 package cyx.sell.service;
 
+import cyx.sell.dto.CartDTO;
 import cyx.sell.entity.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,4 +14,6 @@ public interface ProductService {
     Product save(Product product);
 //    Product onSale(String productId);//上架
 //    Product offSale(String productId);//下架
+    void increaseStock(List<CartDTO> cartDTOList);//增库存
+    void decreaseStock(List<CartDTO> cartDTOList);//减库存
 }
