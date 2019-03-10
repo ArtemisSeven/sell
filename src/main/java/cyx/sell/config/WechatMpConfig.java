@@ -1,5 +1,6 @@
 package cyx.sell.config;
 
+import com.lly835.bestpay.config.WxPayH5Config;
 import me.chanjar.weixin.mp.api.WxMpConfigStorage;
 import me.chanjar.weixin.mp.api.WxMpInMemoryConfigStorage;
 import me.chanjar.weixin.mp.api.WxMpService;

@@ -33,6 +33,7 @@ public class WechatController {
      */
     @GetMapping("/authorize")
     public String authorize(@RequestParam("returnUrl")String returnUrl){//这个returnUrl就是自己项目的地址，测试时可以使用https://www.baidu.com
+        System.out.println("returnUrl是"+returnUrl);
         //1.配置 WxMpService
         String url="http://bfnzvt.natappfree.cc/sell/wechat/userInfo";//回调地址(微信服务器会附加code和state属性)
         String redirectUrl=wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_BASE, URLEncoder.encode(returnUrl));
@@ -55,7 +56,8 @@ public class WechatController {
             throw new SellException(ResultEnum.WECHAT_MP_ERROR);
         }
         String openid=wxMpOAuth2AccessToken.getOpenId();
+        System.out.println("openid="+openid);
         String accessToken=wxMpOAuth2AccessToken.getAccessToken();
-        return "redirect:"+returnUrl+"?openid"+openid;
+        return "redirect:"+returnUrl+"?openid="+openid;
     }
 }

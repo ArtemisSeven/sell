@@ -14,3 +14,7 @@ server:
 wechat:
   mpAppId: wx2aef3b3062efcb09
   mpAppSecret: bd15086d8359818808c0a53a00f9d7b0
+  mch-id: ss
+  mch-key: ss
+  keyPath: /var/weixin_cert/h5.p12
+  notifyUrl: http://bfnzvt.natappfree.cc/sell/pay/notify
