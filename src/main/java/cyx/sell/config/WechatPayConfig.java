@@ -8,10 +8,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class WechatPayConfig {
-
     @Autowired
     private WechatAccountConfig wechatAccountConfig;
-
     @Bean
     public BestPayServiceImpl bestPayService(){
         BestPayServiceImpl bestPayService=new BestPayServiceImpl();
