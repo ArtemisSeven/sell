@@ -1,7 +1,7 @@
 package cyx.sell.dao;
 
 import cyx.sell.entity.OrderMaster;
-import cyx.sell.entity.PayStatusEnum;
+import cyx.sell.enums.PayStatusEnum;
 import cyx.sell.enums.OrderStatusEnum;
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,7 +14,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
 
-import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class OrderMasterDaoTest {

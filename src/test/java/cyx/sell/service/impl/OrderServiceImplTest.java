@@ -2,17 +2,13 @@ package cyx.sell.service.impl;
 
 import cyx.sell.dto.OrderDTO;
 import cyx.sell.entity.OrderDetail;
-import cyx.sell.entity.OrderMaster;
-import cyx.sell.entity.PayStatusEnum;
+import cyx.sell.enums.PayStatusEnum;
 import cyx.sell.enums.OrderStatusEnum;
-import cyx.sell.enums.ResultEnum;
-import cyx.sell.exception.SellException;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
@@ -22,7 +18,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class OrderServiceImplTest {
@@ -98,5 +93,12 @@ public class OrderServiceImplTest {
         OrderDTO orderDTO = orderService.findOne(ORDER_ID);
         OrderDTO result = orderService.pay(orderDTO);
         Assert.assertEquals(PayStatusEnum.SUCCESS.getCode(), result.getPayStatus());
+    }
+
+    @Test
+    public void findAll() {
+        PageRequest pageRequest=new PageRequest(0,2);
+        Page<OrderDTO> orderDTOPage=orderService.findAll(pageRequest);
+        Assert.assertTrue("查询所有订单",orderDTOPage.getTotalElements()>0);
     }
 }

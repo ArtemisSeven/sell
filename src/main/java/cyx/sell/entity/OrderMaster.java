@@ -1,6 +1,6 @@
 package cyx.sell.entity;
 
-import cyx.sell.entity.PayStatusEnum;
+import cyx.sell.enums.PayStatusEnum;
 import cyx.sell.enums.OrderStatusEnum;
 import org.hibernate.annotations.DynamicUpdate;
 

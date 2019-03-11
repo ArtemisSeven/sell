@@ -1,6 +1,6 @@
 package cyx.sell.enums;
 
-public enum OrderStatusEnum {
+public enum OrderStatusEnum implements CodeEnum{
     NEW(0,"新订单"),
     FINISH(1,"已完成"),
     CANCEL(2,"已取消")

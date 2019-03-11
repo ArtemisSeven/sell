@@ -3,12 +3,11 @@ package cyx.sell.service.impl;
 import cyx.sell.converter.OrderMasterToOrderDTOConverter;
 import cyx.sell.dao.OrderDetailDao;
 import cyx.sell.dao.OrderMasterDao;
-import cyx.sell.dao.ProductDao;
 import cyx.sell.dto.CartDTO;
 import cyx.sell.dto.OrderDTO;
 import cyx.sell.entity.OrderDetail;
 import cyx.sell.entity.OrderMaster;
-import cyx.sell.entity.PayStatusEnum;
+import cyx.sell.enums.PayStatusEnum;
 import cyx.sell.entity.Product;
 import cyx.sell.enums.OrderStatusEnum;
 import cyx.sell.enums.ResultEnum;
@@ -28,11 +27,8 @@ import org.springframework.util.CollectionUtils;
 
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Service
@@ -195,5 +191,13 @@ public class OrderServiceImpl implements OrderService {
         }
 
         return orderDTO;
+    }
+
+    @Override
+    public Page<OrderDTO> findAll(Pageable pageable) {
+        Page<OrderMaster> orderMasterPage=orderMasterDao.findAll(pageable);
+        List<OrderDTO> orderDTOList=OrderMasterToOrderDTOConverter.convert(orderMasterPage.getContent());
+        Page<OrderDTO> orderDTOPage=new PageImpl<OrderDTO>(orderDTOList,pageable,orderMasterPage.getTotalElements());
+        return orderDTOPage;
     }
 }

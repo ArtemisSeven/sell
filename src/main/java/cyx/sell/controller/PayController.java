@@ -24,7 +24,7 @@ public class PayController {
     private PayServiceImpl payService;
 
     @GetMapping("/create")
-    public ModelAndView create(@RequestParam("orderId")String orderId, @RequestParam("returnUrl")String returnUrl,@RequestParam("map")Map<String,Object> map){
+    public ModelAndView create(@RequestParam("orderId")String orderId, @RequestParam("returnUrl")String returnUrl,Map<String,Object> map){
         //查询订单
         OrderDTO orderDTO=orderService.findOne(orderId);
         if (orderDTO==null){
