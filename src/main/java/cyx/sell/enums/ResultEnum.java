@@ -16,6 +16,7 @@ public enum  ResultEnum {
     WECHAT_NOTIFY_MONEY_VERIFY_ERROR(110,"微信异步通知金额校验不通过"),
     ORDER_CANCEL_SUCCESS(120,"订单取消成功"),
     ORDER_FINISH_SUCCESS(130,"订单完结成功"),
+    PRODUCT_STATUS_ERROR(24, "商品状态不正确"),
     ;
     private Integer code;
     private String message;

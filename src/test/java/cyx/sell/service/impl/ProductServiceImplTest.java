@@ -1,6 +1,7 @@
 package cyx.sell.service.impl;
 
 import cyx.sell.entity.Product;
+import cyx.sell.enums.ProductStatusEnum;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -56,4 +57,17 @@ public class ProductServiceImplTest {
         Product result=productService.save(product);
         Assert.assertNotNull(result);
     }
+
+    @Test
+    public void onSale() {
+        Product result = productService.onSale("123456");
+        Assert.assertEquals(ProductStatusEnum.UP, result.getProductStatusEnum());
+    }
+
+    @Test
+    public void offSale() {
+        Product result = productService.offSale("123456");
+        Assert.assertEquals(ProductStatusEnum.DOWN, result.getProductStatusEnum());
+    }
+
 }
