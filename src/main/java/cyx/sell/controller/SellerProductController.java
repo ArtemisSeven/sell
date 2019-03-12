@@ -11,6 +11,8 @@ import cyx.sell.utils.KeyUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -103,6 +105,8 @@ public class SellerProductController {
      * @return
      */
     @PostMapping("/save")
+//    @CachePut(cacheNames = "product",key = "123")//每次执行完save()都会把ModelAndView里的内容put到redis中
+    @CacheEvict(cacheNames = "product",key = "123")//由于ModelAndView不能序列化，所以需要驱除已有的缓存，下次就会去数据库中重新获取
     public ModelAndView save(@Valid ProductForm form,
                              BindingResult bindingResult,
                              Map<String, Object> map) {

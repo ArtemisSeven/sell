@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductCategoryServiceImpl implements ProductCategoryService {
@@ -14,7 +15,9 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
     ProductCategoryDao productCategoryDao;
     @Override
     public ProductCategory findOne(int id) {
-        return productCategoryDao.findById(id).get();
+        Optional<ProductCategory> categoryOptional=productCategoryDao.findById(id);
+        ProductCategory category=categoryOptional.isPresent()?categoryOptional.get():null;
+        return category;
     }
 
     @Override

@@ -13,6 +13,7 @@ import cyx.sell.utils.ResultVOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,6 +32,7 @@ public class BuyerProductController {
     @Autowired
     private ProductCategoryService productCategoryService;
 
+    @Cacheable(cacheNames = "product",key="123")//首次执行一次list()加载内容，下次从redis缓存中取
     @GetMapping("/list")
     public ResultVO list(){
         //1.查询所有在架商品

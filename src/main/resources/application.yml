@@ -9,8 +9,9 @@ spring:
   redis:
     host: 192.168.199.154
     port: 6379
-#  jackson:
-#    default-property-inclusion: non_null
+#  如果返回的json某个字段是null，则不返回此字段
+  jackson:
+    default-property-inclusion: non_null
 server:
   servlet:
     context-path: /sell
@@ -29,3 +30,7 @@ project:
   wx-open-authorize: http://rjbiqv.natappfree.cc
   wx-mp-authorize: http://rjbiqv.natappfree.cc
   sell: http://rjbiqv.natappfree.cc
+#  配置了这个之后就可以看到mybatis注解方式下的sql语句执行，开发的时候用
+logging:
+  level:
+    cyx.sell.mapper: trace

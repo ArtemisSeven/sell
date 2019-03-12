@@ -8,21 +8,35 @@ import cyx.sell.enums.ResultEnum;
 import cyx.sell.exception.SellException;
 import cyx.sell.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
+@CacheConfig(cacheNames = "productOne")//加了这个注解就不用每个方法 都写cacheNames了
 public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductDao productDao;
 
+//    @Cacheable(key="456")//
     @Override
     public Product findOne(String id) {
-        return productDao.findById(id).get();
+        Optional<Product> optionalProduct=productDao.findById(id);
+        Product product=optionalProduct.isPresent()?optionalProduct.get():null;
+        return product;
+    }
+
+//    @CachePut(key = "456")//由于这两个方法返回的类型都是Product，并且可以序列化，所以这里可以使用@CachePut
+    @Override
+    public Product save(Product product) {
+        return productDao.save(product);
     }
 
     @Override
@@ -35,10 +49,6 @@ public class ProductServiceImpl implements ProductService {
         return productDao.findAll(pageable);
     }
 
-    @Override
-    public Product save(Product product) {
-        return productDao.save(product);
-    }
 
     @Override
     public void increaseStock(List<CartDTO> cartDTOList) {

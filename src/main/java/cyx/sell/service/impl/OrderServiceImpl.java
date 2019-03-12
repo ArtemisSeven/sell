@@ -11,6 +11,7 @@ import cyx.sell.enums.PayStatusEnum;
 import cyx.sell.entity.Product;
 import cyx.sell.enums.OrderStatusEnum;
 import cyx.sell.enums.ResultEnum;
+import cyx.sell.exception.ResponseBankException;
 import cyx.sell.exception.SellException;
 import cyx.sell.server.WebSocketServer;
 import cyx.sell.service.OrderService;
@@ -58,6 +59,7 @@ public class OrderServiceImpl implements OrderService {
             Product product=productService.findOne(orderDetail.getProductId());
             if (product==null){
                 throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
+//                throw new ResponseBankException();//测试是否返回403
             }
             //2.计算总价
             orderAmount=orderAmount.add(product.getProductPrice().multiply(new BigDecimal(orderDetail.getProductQuantity())));

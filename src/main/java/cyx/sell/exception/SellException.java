@@ -1,7 +1,9 @@
 package cyx.sell.exception;
 
 import cyx.sell.enums.ResultEnum;
+import lombok.Data;
 
+@Data
 public class SellException extends RuntimeException{
     private Integer code;
 
