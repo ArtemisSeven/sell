@@ -72,6 +72,63 @@
         </div>
     </div>
     </body>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!--使用html5原生的websocket-->
+<script>
+    var websocket=null;
+    if('WebSocket' in Window){
+        websocket=new WebSocket('ws://rjbiqv.natappfree.cc/sell/webSockerServer');//注意websocket使用的是ws协议,url是服务端的地址
+    }else{
+        alert('该浏览器不支持websocket');
+    }
+    websocket.onopen=function (ev) {
+        console.log('建立连接');
+    }
+    websocket.onclose=function (ev) {
+        console.log('断开连接');
+    }
+    websocket.onerror=function (ev) {
+        console.log('发生错误');
+    }
+    websocket.onmessage=function (ev) {
+        console.log('收到消息:'+ev.data);
+        //弹窗
+        $('#myModal').modal('show');
+        //播放音乐
+        document.getElementById('notice').play();
+    }
+    Window.onbeforeunload=function(){
+        websocket.close();
+    }
+</script>
+<!--至此，websocket的前端代码已完成(其实就是一个script而已)-->
+
+    <#--弹窗-->
+    <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        提醒
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    你有新的订单
+                </div>
+                <div class="modal-footer">
+                    <button onclick="javascript:document.getElementById('notice').pause()" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button onclick="location.reload()" type="button" class="btn btn-primary">查看新的订单</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <#--播放音乐-->
+    <audio id="notice" loop="loop">
+        <source src="/sell/mp3/song.mp3" type="audio/mpeg" />
+    </audio>
 </html>
 
 

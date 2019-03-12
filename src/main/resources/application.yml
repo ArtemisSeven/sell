@@ -17,7 +17,7 @@ server:
 wechat:
   mch-id: idontknow
   mch-key: idontknow
-  notify-url: http://pwnhy3.natappfree.cc/sell/pay/notify
+  notify-url: http://rjbiqv.natappfree.cc/sell/pay/notify
   key-path: /var/weixin_cert/h5.p12
   open-app-secret: idontknow
   open-app-id: idontknow
@@ -26,6 +26,6 @@ wechat:
   template-id:
     order-status: kuN_iAzt8_72SvaFxnusblIf_1nOydOxd8mmxyLZpdI
 project:
-  wx-open-authorize: http://pwnhy3.natappfree.cc
-  wx-mp-authorize: http://pwnhy3.natappfree.cc
-  sell: http://pwnhy3.natappfree.cc
+  wx-open-authorize: http://rjbiqv.natappfree.cc
+  wx-mp-authorize: http://rjbiqv.natappfree.cc
+  sell: http://rjbiqv.natappfree.cc

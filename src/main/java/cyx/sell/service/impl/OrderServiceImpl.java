@@ -12,6 +12,7 @@ import cyx.sell.entity.Product;
 import cyx.sell.enums.OrderStatusEnum;
 import cyx.sell.enums.ResultEnum;
 import cyx.sell.exception.SellException;
+import cyx.sell.server.WebSocketServer;
 import cyx.sell.service.OrderService;
 import cyx.sell.utils.KeyUtil;
 import org.slf4j.Logger;
@@ -44,6 +45,8 @@ public class OrderServiceImpl implements OrderService {
     private PayServiceImpl payService;
     @Autowired
     private PushMessageServiceImpl pushMessageService;
+    @Autowired
+    private WebSocketServer webSocketServer;
 
     @Override
     @Transactional
@@ -78,6 +81,8 @@ public class OrderServiceImpl implements OrderService {
                 .collect(Collectors.toList());
 
         productService.decreaseStock(cartDTOList);
+        //6.发送websocket消息
+        webSocketServer.sendMessage("订单号："+orderId);
         return orderDTO;
     }
 
