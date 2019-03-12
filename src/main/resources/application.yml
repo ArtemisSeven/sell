@@ -23,6 +23,8 @@ wechat:
   open-app-id: idontknow
   mp-app-secret: bd15086d8359818808c0a53a00f9d7b0
   mp-app-id: wx2aef3b3062efcb09
+  template-id:
+    order-status: kuN_iAzt8_72SvaFxnusblIf_1nOydOxd8mmxyLZpdI
 project:
   wx-open-authorize: http://pwnhy3.natappfree.cc
   wx-mp-authorize: http://pwnhy3.natappfree.cc

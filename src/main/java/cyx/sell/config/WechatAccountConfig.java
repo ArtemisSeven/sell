@@ -5,6 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 import javax.net.ssl.SSLContext;
+import java.util.Map;
 
 @Component
 @ConfigurationProperties(prefix = "wechat")
@@ -18,4 +19,5 @@ public class WechatAccountConfig {
     private String mchKey;
     private String keyPath;//商户证书存放的路径
     private String notifyUrl;//微信支付异步通知地址
+    private Map<String,String> templateId;//微信模版消息id
 }

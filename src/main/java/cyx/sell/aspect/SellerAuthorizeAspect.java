@@ -28,7 +28,7 @@ public class SellerAuthorizeAspect {
     @Autowired
     private StringRedisTemplate redisTemplate;
 
-    @Pointcut("execution(public * cyx.sell.controller.Seller*.*(..))&&!execution(public * cyx.sell.controller.SellerUserController.*(..)")
+    @Pointcut("execution(public * cyx.sell.controller.Seller*.*(..))&&!execution(public * cyx.sell.controller.SellerUserController.*(..))")
     public void verify(){}
 
     @Before("verify()")
