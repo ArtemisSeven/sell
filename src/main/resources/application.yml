@@ -6,15 +6,24 @@ spring:
     url: jdbc:mysql://localhost:3306/sell?characterEncoding=utf-8&useSSL=false
   jpa:
     show-sql: true
+  redis:
+    host: 192.168.199.154
+    port: 6379
 #  jackson:
 #    default-property-inclusion: non_null
 server:
   servlet:
     context-path: /sell
 wechat:
-  mpAppId: wx2aef3b3062efcb09
-  mpAppSecret: bd15086d8359818808c0a53a00f9d7b0
-  mch-id: ss
-  mch-key: ss
-  keyPath: /var/weixin_cert/h5.p12
-  notifyUrl: http://bfnzvt.natappfree.cc/sell/pay/notify
+  mch-id: idontknow
+  mch-key: idontknow
+  notify-url: http://pwnhy3.natappfree.cc/sell/pay/notify
+  key-path: /var/weixin_cert/h5.p12
+  open-app-secret: idontknow
+  open-app-id: idontknow
+  mp-app-secret: bd15086d8359818808c0a53a00f9d7b0
+  mp-app-id: wx2aef3b3062efcb09
+project:
+  wx-open-authorize: http://pwnhy3.natappfree.cc
+  wx-mp-authorize: http://pwnhy3.natappfree.cc
+  sell: http://pwnhy3.natappfree.cc

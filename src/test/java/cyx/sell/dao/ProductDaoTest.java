@@ -23,14 +23,14 @@ public class ProductDaoTest {
     @Test
     public void save(){
         Product product=new Product();
-        product.setProductId("111");
-        product.setProductId("1");
+        product.setProductId("555");
+        product.setProductId("5");
         product.setCategoryType(1);
-        product.setProductName("皮蛋粥");
+        product.setProductName("羊肉串");
         product.setProductPrice(new BigDecimal(1));
         product.setProductStock(100);
         product.setProductStatus(0);
-        product.setProductDescription("好喝");
+        product.setProductDescription("香");
         product.setProductIcon("/xxx");
         Product result=productDao.save(product);
         Assert.assertNotNull(result);
